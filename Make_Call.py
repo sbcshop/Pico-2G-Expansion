@@ -7,7 +7,7 @@ import utime
 
 
 led_pin = 25  # Pico onboard Led
-pwr_en = 22  # SIM868 Pwrkey connected on GP22
+pwr_enable = 22  # SIM868 Pwrkey connected on GP22
 uart_port = 0
 uart_baute = 9600
 
@@ -31,7 +31,7 @@ def blink_led():
 
 # power on/off the module
 def power_on_off():
-    pwr_key = machine.Pin(pwr_en, machine.Pin.OUT)
+    pwr_key = machine.Pin(pwr_enable, machine.Pin.OUT)
     pwr_key.value(1)
     utime.sleep(2)
     pwr_key.value(0)
