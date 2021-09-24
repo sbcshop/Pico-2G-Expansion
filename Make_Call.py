@@ -9,10 +9,10 @@ import utime
 led_pin = 25  # Pico onboard Led
 pwr_enable = 22  # SIM868 Pwrkey connected on GP22
 uart_port = 0
-uart_baute = 9600
+uart_baud = 9600
 
 # Initialize UART0 
-uart = machine.UART(uart_port, uart_baute)
+uart = machine.UART(uart_port, uart_baud)
 print(os.uname())
 
 # Initialize on board led as output
