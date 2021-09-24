@@ -127,4 +127,4 @@ def make_call(phone_num='10000', keep_time=10):
 blink_led()  # Test Led
 check_start() # Initialize SIM Module 
 network_check() # Network connectivity check
-make_call("7888786816" , 15) # Replace "123456" with Mobile number and 15 with timeout to hang call in seconds
+make_call("123456" , 15) # Replace "123456" with Mobile number and 15 with timeout to hang call in seconds
