@@ -94,11 +94,11 @@ def check_start():
         uart.write(bytearray(b'AT\r\n'))
         rec_temp = wait_resp_info()
         if 'OK' in rec_temp.decode():
-            print('SIM868 is ready\r\n' + rec_temp.decode())
+            print('Pico 2G is ready\r\n' + rec_temp.decode())
             break
         else:
             power_on_off()
-            print('SIM868 is starting up, please wait...\r\n')
+            print('Pico 2G is starting up, please wait...\r\n')
             utime.sleep(8)
 
 
@@ -114,7 +114,7 @@ def network_check():
             continue
 
 
-# Get the gps info
+# calling function
 def make_call(phone_num='10000', keep_time=10):
     send_cmd('AT+CHFA=1', 'OK')
     send_cmd("ATD"+phone_num+";", 'OK')
