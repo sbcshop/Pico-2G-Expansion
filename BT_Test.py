@@ -3,6 +3,8 @@
 import machine
 import os
 import utime
+import time
+import Lcd1_14driver
 
 
 led_pin = 25  # Pico onboard Led
@@ -17,6 +19,7 @@ print(os.uname())
 # Initialize on board led as output
 led_onboard = machine.Pin(led_pin, machine.Pin.OUT)
 
+LCD = Lcd1_14driver.Lcd1_14()#driver of lcd display
 
 def blink_led():
     led_onboard(1)
@@ -27,7 +30,33 @@ def blink_led():
     utime.sleep(1)
     led_onboard(0)
 
-
+def lcd_border():
+        LCD.hline(10,10,220,LCD.white)
+        LCD.hline(10,125,220,LCD.white)
+        LCD.vline(10,10,115,LCD.white)
+        LCD.vline(230,10,115,LCD.white)       
+        LCD.lcd_show()
+    
+def infoDevice():
+        LCD.fill(LCD.black) 
+        LCD.lcd_show()
+        lcd_border()
+        
+        LCD.text("SB-COMPONENTS",70,40,LCD.white)
+        LCD.text("PICO 2G",70,60,LCD.white)
+        LCD.text("EXPANSION",70,80,LCD.white)  
+        LCD.lcd_show()
+        time.sleep(2)
+        LCD.fill(LCD.black)
+        lcd_border()
+        LCD.text("WAITING.....",70,40,LCD.white)
+        LCD.lcd_show()
+        x = 0
+        for y in range(0,1):
+             x += 4
+             LCD.text("......",125+x,40,LCD.white)
+             LCD.lcd_show()
+             time.sleep(1)
 # power on/off the module
 def power_on_off():
     pwr_key = machine.Pin(pwr_enable, machine.Pin.OUT)
@@ -94,10 +123,23 @@ def check_start():
         rec_temp = wait_resp_info()
         if 'OK' in rec_temp.decode():
             print('Pico 2G is ready\r\n' + rec_temp.decode())
+            LCD.fill(LCD.black) 
+            LCD.lcd_show()
+            lcd_border()
+
+            LCD.text("Pico 2G is ready",40,40,LCD.white) 
+            LCD.lcd_show()
             break
         else:
             power_on_off()
             print('Pico 2G is starting up, please wait...\r\n')
+            LCD.fill(LCD.black) 
+            LCD.lcd_show()
+            lcd_border()
+
+            LCD.text("Pico 2G is starting up",40,40,LCD.white)
+            LCD.text("Please wait...",40,60,LCD.white) 
+            LCD.lcd_show()
             utime.sleep(8)
 
 
@@ -116,14 +158,35 @@ def network_check():
 # Scan Bluetooth devices
 def bt_scan():
     send_cmd('AT+BTPOWER=1', 'OK', 3000)
+    LCD.fill(LCD.black) 
+    LCD.lcd_show()
+    lcd_border()
+    LCD.text("BT power on",40,40,LCD.white) 
+    LCD.lcd_show()
+    
     send_cmd('AT+BTHOST?', 'OK', 3000)
     send_cmd('AT+BTSTATUS?', 'OK', 3000)
     send_cmd('AT+BTSCAN=1,10', 'OK', 8000)
+    LCD.fill(LCD.black) 
+    LCD.lcd_show()
+    lcd_border()
+    LCD.text("Scan BT Devices",40,40,LCD.white) 
+    LCD.lcd_show()
+    
+    utime.sleep(4)
     send_cmd('AT+BTPOWER=0', 'OK')
+    LCD.fill(LCD.black) 
+    LCD.lcd_show()
+    lcd_border()
+    LCD.text("BT power off",40,40,LCD.white) 
+    LCD.lcd_show()
 
 
 
 # main function call
+infoDevice()
 blink_led()  # Test Led
 check_start() # Initialize SIM Module 
 bt_scan() # Scan for nearby discoverable bluetooth devices
+
+
