@@ -17,4 +17,4 @@ Pico 2G Expansion also includes a 1.14-inch display with a resolution of 240 x 1
 * To scan Bluetooth devices, you need to uncomment this line Bluetooth = SIM868.bluetooth() in pico_2g_exp.py file
 * You need to enter your mobile number in the code pico_2g_exp.py to make call and send the message
 
-For step by step tutorial visit: [Pico 2G Expansion Wiki](https://learn.sb-components.co.uk/Pico-2g-expansion)
+### For step by step tutorial visit: [Pico 2G Expansion Wiki](https://learn.sb-components.co.uk/Pico-2g-expansion)
