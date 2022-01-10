@@ -4,7 +4,7 @@ Raspberry Pi Pico 2G Expansion is a QUAD-Band GSM/GPRS/GNSS Expansion designed d
 
 Pico 2G Expansion also includes a 1.14-inch display with a resolution of 240 x 135 pixels, 65K RGB colors, and a sharp and vivid exhibiting effect, designed primarily for user engagement via SPI connection by incorporating a GPIO header. The 1.14-inch LCD includes the ST7789 Driver and SPI Interface, decreasing the amount of IO pins required.
 
-
+## Code
 * Now open the below examples code as per their function to test the pico 2G Expansion in Thonny Ide.
   * SIM868.py: This file contain the library of the module, you need to add this file to pico.
   * pico_2g_exp.py: This is the main file that you need to run.
