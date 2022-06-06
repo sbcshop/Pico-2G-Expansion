@@ -209,3 +209,29 @@ def bluetooth():
         LCD.lcd_show()
         LCD.text("BT power off",40,40,LCD.white) 
         LCD.lcd_show()
+        
+        
+def tcp(tcp_ip,port,APN,data):
+    Check_and_start() # Initialize SIM Module 
+    Network_checking() # Network connectivity check
+    def hexstr_to_str(hex_str):
+        hex_data = hex_str.encode('utf-8')
+        str_bin = binascii.unhexlify(hex_data)
+        return str_bin.decode('utf-8')
+
+
+    def str_to_hexstr(string):
+        str_bin = string.encode('utf-8')
+        return binascii.hexlify(str_bin).decode('utf-8')
+
+    Send_command('AT+CIPSHUT', 'OK')
+    Send_command("AT+CSQ", "OK")
+    Send_command("AT+CREG?", "OK")
+    Send_command('AT+CGATT?', 'OK')
+    Send_command("AT+CSTT=""\""+APN+"\"", 'OK',5)
+    Send_command('AT+CIICR', 'OK')
+    Send_command('AT+CIFSR', 'OK')
+    Send_command("AT+CIPSTART=\"TCP\",\""+tcp_ip+"\",\""+port+"\"", 'OK')
+    Send_command('AT+CIPSEND', ">",5)
+    uart.write(bytearray(data))
+    uart.write(bytearray(hexstr_to_str("1A")))
