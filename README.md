@@ -19,3 +19,7 @@ Pico 2G Expansion also includes a 1.14-inch display with a resolution of 240 x 1
 * To send to data through TCP uncomment this line Tcp = EG25_4G.tcp(tcp_ip,port,APN,data) # data send to server
 
 ### For step by step tutorial visit: [Pico 2G Expansion Wiki](https://learn.sb-components.co.uk/Pico-2g-expansion)
+
+## Youtube video
+
+https://www.youtube.com/watch?v=p_3c2LZ1k08&ab_channel=SBComponentsLtd
