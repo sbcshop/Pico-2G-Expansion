@@ -7,6 +7,12 @@ import SIM868
 
 LCD = Lcd1_14driver.Lcd1_14()#driver of lcd display
 
+##################################TCP########
+tcp_ip = "write tcp server ip or address"
+port = "80" # write the port
+APN = "airtelgprs.com" # write your APN address
+############################################
+
 def infoDevice():
         LCD.fill(LCD.black) 
         LCD.hline(10,10,220,LCD.white)
@@ -41,3 +47,6 @@ Message = SIM868.message(Mobile_number,Write_message) #send the message
 #Gps = SIM868.gps() #uncomment this to use gps
 
 #Bluetooth = SIM868.bluetooth() #uncomment this to use bluetooth # Scan Bluetooth devices
+
+#data = "Hello World!!"
+#Tcp = EG25_4G.tcp(tcp_ip,port,APN,data) # data send to server
