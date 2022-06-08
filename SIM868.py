@@ -256,3 +256,30 @@ def get_http(get_server,APN):
         print("failed, please check and try again\n")
     Send_command('AT+HTTPTERM', 'OK')
 
+
+def post_http():
+    Check_and_start() # Initialize SIM Module 
+    Network_checking() # Network connectivity check
+    # set APN
+    send_at('AT+SAPBR=3,1,\"Contype\",\"GPRS\"', 'OK')
+    send_at('AT+SAPBR=3,1,\"APN\",\"'+APN+'\"', 'OK')
+    send_at('AT+SAPBR=1,1', 'OK')
+    send_at('AT+SAPBR=2,1', 'OK')
+    
+    Send_command('AT+HTTPINIT', 'OK')
+    Send_command('AT+HTTPPARA=\"CID\",1', 'OK')
+    Send_command('AT+HTTPPARA=\"URL\",\"'+http_post_server[0]+http_post_server[1]+'\"', 'OK')
+    Send_command('AT+HTTPPARA=\"CONTENT\",\"' + http_content_type + '\"', 'OK')
+    if Send_command('AT+HTTPDATA=62,8000', 'DOWNLOAD', 3000):
+        uart.write(bytearray(http_post_tmp))
+        utime.sleep(5)
+        rec_buff = wait_resp_info()
+        if 'OK' in rec_buff.decode():
+            print("UART data is read!\n")
+        if Send_command('AT+HTTPACTION=1', '200', 8000):
+            print("POST successfully!\n")
+        else:
+            print("POST failed\n")
+        Send_command('AT+HTTPTERM', 'OK')
+    else:
+        print("failed，please try again!\n")
