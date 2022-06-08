@@ -17,8 +17,8 @@ Pico 2G Expansion also includes a 1.14-inch display with a resolution of 240 x 1
 * To scan Bluetooth devices, you need to uncomment this line Bluetooth = SIM868.bluetooth() in pico_2g_exp.py file
 * You need to enter your mobile number in the code pico_2g_exp.py to make call and send the message
 * To send to data through TCP uncomment this line Tcp = EG25_4G.tcp(tcp_ip,port,APN,data) # data send to server
-* To use GET method(thingspeak), uncomment this line  Get = SIM868.get_http(get_server,APN)
-* To use POST method(thingspeak),uncomment this line Post = EG25_4G.post_http(post_data,APN,content_type,post_server)
+* To use GET method(get data from thingspeak), uncomment this line  Get = SIM868.get_http(get_server,APN)
+* To use POST method(post data to thingspeak),uncomment this line Post = EG25_4G.post_http(post_data,APN,content_type,post_server)
 
 ### For step by step tutorial visit: [Pico 2G Expansion Wiki](https://learn.sb-components.co.uk/Pico-2g-expansion)
 
