@@ -7,10 +7,15 @@ import SIM868
 
 LCD = Lcd1_14driver.Lcd1_14()#driver of lcd display
 
+APN = "airtelgprs.com" # write your APN address
+
+###############GET weather from openweather.map ####
+get_server = "https://api.openweathermap.org/data/2.5/weather?id=2643743&appid=dff350f24230806454d5f48aebbf97bb"
+####################################################
+
 ##################################TCP########
 tcp_ip = "write tcp server ip or address"
 port = "80" # write the port
-APN = "airtelgprs.com" # write your APN address
 ############################################
 
 def infoDevice():
@@ -50,3 +55,5 @@ Message = SIM868.message(Mobile_number,Write_message) #send the message
 
 #data = "Hello World!!"
 #Tcp = EG25_4G.tcp(tcp_ip,port,APN,data) # data send to server
+
+#Get = SIM868.get_http(get_server,APN)
