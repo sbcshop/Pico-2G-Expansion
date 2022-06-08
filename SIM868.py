@@ -235,3 +235,24 @@ def tcp(tcp_ip,port,APN,data):
     Send_command('AT+CIPSEND', ">",5)
     uart.write(bytearray(data))
     uart.write(bytearray(hexstr_to_str("1A")))
+        
+        
+def get_http(get_server,APN):
+    Check_and_start() # Initialize SIM Module 
+    Network_checking() # Network connectivity check
+    Send_command('AT+SAPBR=3,1,\"Contype\",\"GPRS\"', 'OK')
+    Send_command('AT+SAPBR=3,1,\"APN\",\"'+APN+'\"', 'OK')
+    Send_command('AT+SAPBR=1,1', 'OK')
+    Send_command('AT+SAPBR=2,1', 'OK')
+    
+    Send_command('AT+HTTPINIT', 'OK')
+    Send_command('AT+HTTPPARA=\"CID\",1', 'OK')
+    Send_command('AT+HTTPPARA=\"URL\",\"'+get_server+'\"', 'OK')
+    if Send_command('AT+HTTPACTION=0', '200', 5000):
+        uart.write(bytearray(b'AT+HTTPREAD\r\n'))
+        rec_buff = wait_resp_info(8000)
+        print("resp is :", rec_buff.decode())
+    else:
+        print("failed, please check and try again\n")
+    Send_command('AT+HTTPTERM', 'OK')
+
