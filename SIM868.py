@@ -268,8 +268,8 @@ def post_http():
     
     Send_command('AT+HTTPINIT', 'OK')
     Send_command('AT+HTTPPARA=\"CID\",1', 'OK')
-    send_at('AT+HTTPPARA=\"URL\",\"'+post_server+'\"', 'OK')
-    send_at('AT+HTTPPARA=\"CONTENT\",\"' + content_type + '\"', 'OK')
+    Send_command('AT+HTTPPARA=\"URL\",\"'+post_server+'\"', 'OK')
+    Send_command('AT+HTTPPARA=\"CONTENT\",\"' + content_type + '\"', 'OK')
     if Send_command('AT+HTTPDATA=62,8000', 'DOWNLOAD', 3000):
         uart.write(bytearray(post_data))
         utime.sleep(5)
