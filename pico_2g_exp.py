@@ -9,8 +9,8 @@ LCD = Lcd1_14driver.Lcd1_14()#driver of lcd display
 
 APN = "airtelgprs.com" # write your APN address
 
-###############GET weather from openweather.map ####
-get_server = "https://api.openweathermap.org/data/2.5/weather?id=2643743&appid=dff350f24230806454d5f48aebbf97bb"
+###############GET your channel details from thingspeak ####
+get_server = "https://api.thingspeak.com/channels/1717341/status.json?api_key=HZEBY0TXT4Z8VER9"
 ####################################################
 
 ##################################TCP########
