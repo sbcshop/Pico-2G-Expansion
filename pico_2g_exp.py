@@ -13,6 +13,12 @@ APN = "airtelgprs.com" # write your APN address
 get_server = "https://api.thingspeak.com/channels/1717341/status.json?api_key=HZEBY0TXT4Z8VER9"
 ####################################################
 
+#################### POST data to thingspeak ###
+post_data = 'api_key=2HWL5NUT0FEA8I57&field1=26.44&field2=57.16' #  write your API keys
+content_type = 'application/x-www-form-urlencoded' 
+post_server = "http://api.thingspeak.com/update"
+################################################
+
 ##################################TCP########
 tcp_ip = "write tcp server ip or address"
 port = "80" # write the port
@@ -57,3 +63,4 @@ Message = SIM868.message(Mobile_number,Write_message) #send the message
 #Tcp = EG25_4G.tcp(tcp_ip,port,APN,data) # data send to server
 
 #Get = SIM868.get_http(get_server,APN)
+#Post = EG25_4G.post_http(post_data,APN,content_type,post_server)
