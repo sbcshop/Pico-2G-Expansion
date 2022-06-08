@@ -261,10 +261,10 @@ def post_http():
     Check_and_start() # Initialize SIM Module 
     Network_checking() # Network connectivity check
     # set APN
-    send_at('AT+SAPBR=3,1,\"Contype\",\"GPRS\"', 'OK')
-    send_at('AT+SAPBR=3,1,\"APN\",\"'+APN+'\"', 'OK')
-    send_at('AT+SAPBR=1,1', 'OK')
-    send_at('AT+SAPBR=2,1', 'OK')
+    Send_command('AT+SAPBR=3,1,\"Contype\",\"GPRS\"', 'OK')
+    Send_command('AT+SAPBR=3,1,\"APN\",\"'+APN+'\"', 'OK')
+    Send_command('AT+SAPBR=1,1', 'OK')
+    Send_command('AT+SAPBR=2,1', 'OK')
     
     Send_command('AT+HTTPINIT', 'OK')
     Send_command('AT+HTTPPARA=\"CID\",1', 'OK')
