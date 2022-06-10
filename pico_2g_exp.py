@@ -10,17 +10,17 @@ LCD = Lcd1_14driver.Lcd1_14()#driver of lcd display
 APN = "airtelgprs.com" # write your APN address
 
 ###############GET your channel details from thingspeak ####
-get_server = "https://api.thingspeak.com/channels/1717341/status.json?api_key=HZEBY0TXT4Z8VER9"
+get_server = "https://api.thingspeak.com/channels/1739661/status.json?api_key=01ANTAK4QMK9A7MQ"
 ####################################################
 
 #################### POST data to thingspeak ###
-post_data = 'api_key=2HWL5NUT0FEA8I57&field1=26.44&field2=57.16' #  write your API keys
+post_data = 'api_key=2HWL5NUT0FEA8I57&field1=26.44' #  write your API keys
 content_type = 'application/x-www-form-urlencoded' 
 post_server = "http://api.thingspeak.com/update"
 ################################################
 
 ##################################TCP########
-tcp_ip = "write tcp server ip or address"
+tcp_ip = "write tcp server ip or address" # or for thingspeak ip is 184.106.153.149
 port = "80" # write the port
 ############################################
 
@@ -59,7 +59,7 @@ Message = SIM868.message(Mobile_number,Write_message) #send the message
 
 #Bluetooth = SIM868.bluetooth() #uncomment this to use bluetooth # Scan Bluetooth devices
 
-#data = "Hello World!!"
+#data = "Hello World!!"or send data to thing speak - "GET https://api.thingspeak.com/update?api_key=01ANTAK4QMK9A7MQ&field1=0"
 #Tcp = EG25_4G.tcp(tcp_ip,port,APN,data) # data send to server
 
 #Get = SIM868.get_http(get_server,APN)
